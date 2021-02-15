@@ -9,3 +9,13 @@ This is ALSA plugin with the following functionality:
 More details can be found on the following wiki pages:
 https://github.com/project-owner/peppyalsa.doc/wiki
   
+Changes by t0bit0bsen:
+- added support for logarithmic scaling of frequency axis and amplitude for spectrum
+- added adjustable smoothing
+- added window functions (Hann, Hamming and Blackman)
+
+all configurable in asound.conf (or asoundrc):
+  logarithmic_frequency  = 0  # 0: linear, 1: log
+  logarithmic_amplitude  = 0  # 0: linear, 1: log
+	smoothing_factor = 50  # 0: no smoothing, 100: 100% smoothing (no update)
+	window = 3 # 1: Hann-Window, 2: Hanning_Window, 3; Blackman-Window 
