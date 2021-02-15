@@ -46,7 +46,7 @@ typedef struct _snd_pcm_scope_peppyalsa {
 } snd_pcm_scope_peppyalsa_t;
 
 typedef struct device {
-	int (*init)(const char *name, int max, int show, int size);
+	int (*init)(const char *name, int max, int show, int size, int log_f, int log_y, int smooth_f, int window);
 	void (*update)(int left, int right, snd_pcm_scope_peppyalsa_t *level);
 } device;
 #endif
