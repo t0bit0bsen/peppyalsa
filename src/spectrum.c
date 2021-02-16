@@ -195,7 +195,7 @@ static void update(int meter_level_l, int meter_level_r, snd_pcm_scope_peppyalsa
 				y = y / input_size;
 				if (y > 65535) {y = 65535;}
 				if (y < 0) {y = 0;}
-				y = (smooth_f  * y_old[m] + (100-smooth_f) * y) / 100;
+				y = abs((smooth_f  * y_old[m] + (100-smooth_f) * y) / 100);
 				y_old[m]=y;
 				
 				if (log_y < 1) {
