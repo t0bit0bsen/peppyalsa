@@ -381,6 +381,9 @@ int _snd_pcm_scope_peppyalsa_open(
     if (spectrum_size < 0) {
 		spectrum_size = DEFAULT_SPECTRUM_SIZE;
     }
+    else if (spectrum_size > 256) {
+		spectrum_size = 256;
+    }
     if (log_f < 0) {
 		log_f = DEFAULT_LOG_F;
     }
@@ -388,7 +391,7 @@ int _snd_pcm_scope_peppyalsa_open(
 		log_y = DEFAULT_LOG_Y;
     }
 
-    if (s_factor < 0) {
+    if (s_factor < 0 || s_factor > 100) {
 		s_factor = DEFAULT_SMOOTH_F;
     }
     if (window < 0) {
