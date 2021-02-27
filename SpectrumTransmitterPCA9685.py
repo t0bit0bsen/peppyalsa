@@ -23,7 +23,7 @@ pca.frequency = 2000
 ## Some definitions
 pipe_name = '/home/pi/myfifosa'
 size = 0
-update_ui_interval = 0.01# update rate of the spectrum visualisation
+update_ui_interval = 0.02# update rate of the spectrum visualisation
 
 pipe = None
 pipe_polling_interval = 0.001 # readout rate of the named pipe, last valid dataset is taken
