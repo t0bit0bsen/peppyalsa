@@ -28,6 +28,13 @@ update_ui_interval = 0.02# update rate of the spectrum visualisation
 pipe = None
 pipe_polling_interval = 0.001 # readout rate of the named pipe, last valid dataset is taken
 
+str = os.popen("cat /home/pi/.asoundrc | grep spectrum_max").read()
+print(str)
+str = str.replace(" ","")
+str = str.replace("spectrum_max","")
+str = str.replace("\n","")
+spectrum_max = int(str)
+
 str = os.popen("cat /home/pi/.asoundrc | grep spectrum_size").read()
 str = str.replace(" ","")
 str = str.replace("spectrum_size","")
@@ -43,9 +50,10 @@ except Exception as e:
     
     
 ## Read data from the pipe and forward it, forever    
+data = [0]*pipe_size
 while True:
     
-    data = [0]*pipe_size
+    
     length = len(data)
     while True:
         try:
@@ -69,17 +77,17 @@ while True:
 # Send data to PCA9685 (pwm board)
     for m in range(16):
         pca.channels[m].duty_cycle = out[m]
-    """
+    
     os.system("clear")
     print("Spectrum")
     for line in range(22,-1, -1):
-        outstr = "{:06} |".format(3000*line)
+        outstr = "{:06} |".format(int(line/22*spectrum_max))
         for i in range(size):
-            if out[i]>=3000*line:
+            if out[i]>=line/22*spectrum_max:
                 outstr = outstr + " ##"
             else:
                 outstr = outstr + "   "
         print(outstr)
 
-        outstr="" """
+        outstr=""
     time.sleep(update_ui_interval)

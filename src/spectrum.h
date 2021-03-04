@@ -31,9 +31,9 @@
 #include "peppyalsa.h"
 
 #define DEFAULT_SPECTRUM_MAX 100
-#define DEFAULT_SPECTRUM_SIZE 11
-#define DEFAULT_LOG_F 0
-#define DEFAULT_LOG_Y 0
+#define DEFAULT_SPECTRUM_SIZE 30
+#define DEFAULT_LOG_F 1
+#define DEFAULT_LOG_Y 1
 #define DEFAULT_SMOOTH_F 50
 #define DEFAULT_WINDOW 3
 
